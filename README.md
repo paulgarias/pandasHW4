@@ -113,6 +113,166 @@ df_schools = df_schools.sort_values('name').reset_index(drop=True)
 
 
 ```python
+df_schools
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>School ID</th>
+      <th>name</th>
+      <th>type</th>
+      <th>size</th>
+      <th>budget</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7</td>
+      <td>Bailey High School</td>
+      <td>District</td>
+      <td>4976</td>
+      <td>3124928</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>Cabrera High School</td>
+      <td>Charter</td>
+      <td>1858</td>
+      <td>1081356</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Figueroa High School</td>
+      <td>District</td>
+      <td>2949</td>
+      <td>1884411</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13</td>
+      <td>Ford High School</td>
+      <td>District</td>
+      <td>2739</td>
+      <td>1763916</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Griffin High School</td>
+      <td>Charter</td>
+      <td>1468</td>
+      <td>917500</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3</td>
+      <td>Hernandez High School</td>
+      <td>District</td>
+      <td>4635</td>
+      <td>3022020</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>8</td>
+      <td>Holden High School</td>
+      <td>Charter</td>
+      <td>427</td>
+      <td>248087</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>Huang High School</td>
+      <td>District</td>
+      <td>2917</td>
+      <td>1910635</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>12</td>
+      <td>Johnson High School</td>
+      <td>District</td>
+      <td>4761</td>
+      <td>3094650</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>9</td>
+      <td>Pena High School</td>
+      <td>Charter</td>
+      <td>962</td>
+      <td>585858</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>Rodriguez High School</td>
+      <td>District</td>
+      <td>3999</td>
+      <td>2547363</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2</td>
+      <td>Shelton High School</td>
+      <td>Charter</td>
+      <td>1761</td>
+      <td>1056600</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>14</td>
+      <td>Thomas High School</td>
+      <td>Charter</td>
+      <td>1635</td>
+      <td>1043130</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>5</td>
+      <td>Wilson High School</td>
+      <td>Charter</td>
+      <td>2283</td>
+      <td>1319574</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>10</td>
+      <td>Wright High School</td>
+      <td>Charter</td>
+      <td>1800</td>
+      <td>1049400</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
 df_student_count = pd.DataFrame(df_students.groupby('school').count()['name'])
 df_student_count = df_student_count.reset_index(drop=False)
 df_student_count.columns = ['name','Number_of_students']
@@ -120,7 +280,119 @@ df_student_count.columns = ['name','Number_of_students']
 
 
 ```python
-df_schools_2= df_schools.set_index('name').join(df_student_count.set_index('name'))
+df_student_count
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>Number_of_students</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bailey High School</td>
+      <td>4976</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cabrera High School</td>
+      <td>1858</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Figueroa High School</td>
+      <td>2949</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ford High School</td>
+      <td>2739</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Griffin High School</td>
+      <td>1468</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Hernandez High School</td>
+      <td>4635</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Holden High School</td>
+      <td>427</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Huang High School</td>
+      <td>2917</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Johnson High School</td>
+      <td>4761</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Pena High School</td>
+      <td>962</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Rodriguez High School</td>
+      <td>3999</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Shelton High School</td>
+      <td>1761</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Thomas High School</td>
+      <td>1635</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Wilson High School</td>
+      <td>2283</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Wright High School</td>
+      <td>1800</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+df_schools_2 = df_schools.set_index('name').join(df_student_count.set_index('name'))
 df_schools_2 = df_schools_2.reset_index(drop=False)
 df_schools_2['Budget per student']=df_schools_2.budget/df_schools_2.Number_of_students
 df_mean_math = pd.DataFrame(df_students.groupby('school')['math_score'].mean()).reset_index(drop=False)
@@ -128,6 +400,198 @@ df_mean_math.columns = ['name','mean_math_score']
 df_schools_3 = df_schools_2.set_index('name').join(df_mean_math.set_index('name'))
 df_schools_3 = df_schools_3.reset_index(drop=False)
 ```
+
+
+```python
+df_schools_2
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>School ID</th>
+      <th>type</th>
+      <th>size</th>
+      <th>budget</th>
+      <th>Number_of_students</th>
+      <th>Budget per student</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bailey High School</td>
+      <td>7</td>
+      <td>District</td>
+      <td>4976</td>
+      <td>3124928</td>
+      <td>4976</td>
+      <td>628.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cabrera High School</td>
+      <td>6</td>
+      <td>Charter</td>
+      <td>1858</td>
+      <td>1081356</td>
+      <td>1858</td>
+      <td>582.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Figueroa High School</td>
+      <td>1</td>
+      <td>District</td>
+      <td>2949</td>
+      <td>1884411</td>
+      <td>2949</td>
+      <td>639.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ford High School</td>
+      <td>13</td>
+      <td>District</td>
+      <td>2739</td>
+      <td>1763916</td>
+      <td>2739</td>
+      <td>644.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Griffin High School</td>
+      <td>4</td>
+      <td>Charter</td>
+      <td>1468</td>
+      <td>917500</td>
+      <td>1468</td>
+      <td>625.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Hernandez High School</td>
+      <td>3</td>
+      <td>District</td>
+      <td>4635</td>
+      <td>3022020</td>
+      <td>4635</td>
+      <td>652.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Holden High School</td>
+      <td>8</td>
+      <td>Charter</td>
+      <td>427</td>
+      <td>248087</td>
+      <td>427</td>
+      <td>581.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Huang High School</td>
+      <td>0</td>
+      <td>District</td>
+      <td>2917</td>
+      <td>1910635</td>
+      <td>2917</td>
+      <td>655.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Johnson High School</td>
+      <td>12</td>
+      <td>District</td>
+      <td>4761</td>
+      <td>3094650</td>
+      <td>4761</td>
+      <td>650.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Pena High School</td>
+      <td>9</td>
+      <td>Charter</td>
+      <td>962</td>
+      <td>585858</td>
+      <td>962</td>
+      <td>609.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Rodriguez High School</td>
+      <td>11</td>
+      <td>District</td>
+      <td>3999</td>
+      <td>2547363</td>
+      <td>3999</td>
+      <td>637.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Shelton High School</td>
+      <td>2</td>
+      <td>Charter</td>
+      <td>1761</td>
+      <td>1056600</td>
+      <td>1761</td>
+      <td>600.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Thomas High School</td>
+      <td>14</td>
+      <td>Charter</td>
+      <td>1635</td>
+      <td>1043130</td>
+      <td>1635</td>
+      <td>638.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Wilson High School</td>
+      <td>5</td>
+      <td>Charter</td>
+      <td>2283</td>
+      <td>1319574</td>
+      <td>2283</td>
+      <td>578.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Wright High School</td>
+      <td>10</td>
+      <td>Charter</td>
+      <td>1800</td>
+      <td>1049400</td>
+      <td>1800</td>
+      <td>583.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
@@ -997,6 +1461,276 @@ df_schools_scores_type
       <td>75.48%</td>
       <td>91.63%</td>
       <td>83.55%</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+# Final Summary
+
+There are a few observable trends that can be discerned from this data.
+
+1) **Charter schools test better**
+
+The key metrics for success are the mean math and reading scores and the percentage of students that at least have a passing grade (I have set this to 65). Sorting out the top and lowest performing schools was able to show that these were a common theme.
+
+2) **Throwing money doesn't necessarily solve the problem **
+
+What is interesting about the grouping by budget data is that even schools with lower budgets per student were outperforming those with higher budgets. It's not immediately clear why this is happening. The data does tend point to a category that warrents further investigation. 
+
+3) ** A possible correlation **
+
+It is a typical assumption that small class sizes tend to produce better results. It is also noted that a school with more money has better resources. Yet, it is small schools and schools with smaller budgets that tend to do well. It points to the possibility that there is another factor that leads to better student success (at least as far as math and reading test scores). We can get a table that does a count of the kinds of schools that each of the size and budget per student categories has. 
+
+Every single school that is small is also a charter school. Only one of the 5 schools in the large school category is a charter school.
+
+Of the schools that have low budgets, 6 of the schools that fall withing the rage of $575 to $615 per student are also charter school.
+
+In the Medium size school category, we see that the singuler charter school, has overall passing rates that are of a different class than those of its similar sized district schools. 
+
+
+```python
+pd.DataFrame(df_schools_4.groupby("View number of student groups")["type"].value_counts())
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>type</th>
+    </tr>
+    <tr>
+      <th>View number of student groups</th>
+      <th>type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Small (400 to 2000)</th>
+      <th>Charter</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Medium (2000 to 3500)</th>
+      <th>District</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Charter</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Large (3500 to 5000)</th>
+      <th>District</th>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+pd.DataFrame(df_schools_4.groupby("View Budget per student groups")["type"].value_counts())
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>type</th>
+    </tr>
+    <tr>
+      <th>View Budget per student groups</th>
+      <th>type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>\$575 to \$595</th>
+      <th>Charter</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>\$595 to \$615</th>
+      <th>Charter</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">\$615 to \$635</th>
+      <th>Charter</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>District</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">\$635 to \$655</th>
+      <th>District</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>Charter</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+df_schools_4[df_schools_4['View number of student groups']=='Medium (2000 to 3500)']
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>School ID</th>
+      <th>type</th>
+      <th>size</th>
+      <th>budget</th>
+      <th>Number_of_students</th>
+      <th>Budget per student</th>
+      <th>mean_math_score</th>
+      <th>mean_reading_score</th>
+      <th>Percentage_passing_math</th>
+      <th>Percentage_passing_reading</th>
+      <th>Overall Passing Rate</th>
+      <th>View Budget per student groups</th>
+      <th>View number of student groups</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>Figueroa High School</td>
+      <td>1</td>
+      <td>District</td>
+      <td>2949</td>
+      <td>1884411</td>
+      <td>2949</td>
+      <td>639.0</td>
+      <td>76.711767</td>
+      <td>81.158020</td>
+      <td>74.872838</td>
+      <td>91.895558</td>
+      <td>83.384198</td>
+      <td>\$635 to \$655</td>
+      <td>Medium (2000 to 3500)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Ford High School</td>
+      <td>13</td>
+      <td>District</td>
+      <td>2739</td>
+      <td>1763916</td>
+      <td>2739</td>
+      <td>644.0</td>
+      <td>77.102592</td>
+      <td>80.746258</td>
+      <td>76.195692</td>
+      <td>90.799562</td>
+      <td>83.497627</td>
+      <td>\$635 to \$655</td>
+      <td>Medium (2000 to 3500)</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Huang High School</td>
+      <td>0</td>
+      <td>District</td>
+      <td>2917</td>
+      <td>1910635</td>
+      <td>2917</td>
+      <td>655.0</td>
+      <td>76.629414</td>
+      <td>81.182722</td>
+      <td>75.282825</td>
+      <td>91.772369</td>
+      <td>83.527597</td>
+      <td>\$635 to \$655</td>
+      <td>Medium (2000 to 3500)</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Wilson High School</td>
+      <td>5</td>
+      <td>Charter</td>
+      <td>2283</td>
+      <td>1319574</td>
+      <td>2283</td>
+      <td>578.0</td>
+      <td>83.274201</td>
+      <td>83.989488</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>\$575 to \$595</td>
+      <td>Medium (2000 to 3500)</td>
     </tr>
   </tbody>
 </table>
